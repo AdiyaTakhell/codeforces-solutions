@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class ABeautifulMatrix {
+public class ABoyOrGirl {
 
     static class InputReader {
         BufferedReader reader;
@@ -40,31 +40,19 @@ public class ABeautifulMatrix {
     static PrintWriter pw = new PrintWriter(System.out);
 
     public static void main(String[] args) {
-
-        int i = 0;
-        int j = 0;
-
-        outerLoop:
-        while (i < 5) {
-            j = 0;
-
-            while (j < 5) {
-                int input = r.nextInt();
-
-                if (input == 1) {
-                    break outerLoop;
-                }
-
-                j++;
-            }
-
-            i++;
+        
+        boolean[] seen = new boolean[26];
+       String userName = r.next();
+       int distint = 0;
+       for(int i = 0 ; i < userName.length() ; i++) {
+        int index = userName.charAt(i) - 'a';
+        if(!seen[index]) {
+            seen[index] = true;
+            distint++;
         }
-
-        int result = Math.abs(i - 2) + Math.abs(j - 2);
-
-        pw.println(result);
+       }
+           
+        pw.println(distint % 2 !=0 ? "IGNORE HIM!" : "CHAT WITH HER!" ) ;
         pw.close();
     }
 }
-
